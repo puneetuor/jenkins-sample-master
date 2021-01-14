@@ -1,5 +1,9 @@
-FROM hshar/webapp
+FROM ubuntu
 
-RUN rm /var/www/html/index.html
+RUN apt-get update
+
+RUN apt-get -y install apache2
 
 ADD ./index.html /var/www/html
+
+ENTRYPOINT apachectl -D FOREGROUND
